@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-import ConfigParser
 import random
 import signal
 import sys
@@ -11,8 +10,6 @@ if len(sys.argv) < 3:
     print "expect 1 argument: $target $interval"
     sys.exit(1)
 
-config = ConfigParser.RawConfigParser()
-config.read('../config')
 
 _random = False
 exponential = False

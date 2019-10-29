@@ -13,10 +13,9 @@ if len(sys.argv) < 3:
 config = ConfigParser.RawConfigParser()
 config.read('../config')
 all_targets = config.get('injection', 'all_targets').strip('"').split(' ')
-SCAPI_IP = config.get('default', 'ip_ISCAPI').strip()
 
 _random = False
-exponecial = False
+exponential = False
 para = sys.argv[2]
 
 if 'random' in para:
@@ -24,7 +23,7 @@ if 'random' in para:
     para = para.replace('random', '')
 
 if 'expo' in para:
-    exponecial = True
+    exponential = True
     para = para.replace('expo', '')
 
 try:

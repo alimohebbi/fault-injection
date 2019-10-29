@@ -23,7 +23,7 @@ if sys.argv[1] == 'stop':
 
 faults = {}
 for term in f_list:
-    term_lst = term.split('-')
+    term_lst = term.split('=')
     faults[term_lst[0]] = term_lst[1].split(',')
 print faults
 for ip in faults:

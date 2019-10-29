@@ -1,6 +1,6 @@
 [injection]
 ips_injection="172.0.16.82"
 inj_enabled=true
-f_list="172.0.16.82-CPUhog_fault_4200"
+f_list="172.0.16.82=memleakexpo_redis-9_4200"
 port=9003
 all_targets="172.0.16.82 192.168.200.194"
