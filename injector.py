@@ -32,11 +32,11 @@ while 1:
        # time.sleep(5400)
         for fault in faults:
             full_command = fault.split('_')
-            candidates = os.listdir('fault_injection/fault_repository')
+            candidates = os.listdir('fault_repository')
             targets = filter(lambda x: full_command[0] in x, candidates)
             if len(targets) != 1:
                 print "Fault not found or more than 1 !! Aborting..."
                 sys.exit(1)
-            full_command[0] = 'fault_injection/fault_repository/' + targets[0]
+            full_command[0] = 'fault_repository/' + targets[0]
             p = subprocess.Popen(full_command, stdout=subprocess.PIPE)
             plst.append(p)
