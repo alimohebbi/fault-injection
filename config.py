@@ -8,4 +8,3 @@ class Config(object):
         dir_path = os.path.dirname(os.path.realpath(__file__))
         self.config = ConfigParser.RawConfigParser()
         self.config.read(dir_path + '/config.ini')
-        print self.config

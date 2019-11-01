@@ -1,11 +1,9 @@
 #!/usr/bin/python
 
-import ConfigParser
 import signal
 import subprocess
 import sys
 import time
-
 from config import Config
 
 if len(sys.argv) < 3:
