@@ -6,12 +6,13 @@ import subprocess
 import sys
 import time
 
+from config import Config
+
 if len(sys.argv) < 3:
     print "expect 1 argument: $target $interval"
     sys.exit(1)
 
-config = ConfigParser.RawConfigParser()
-config.read('../config')
+config = Config().config
 all_targets = config.get('injection', 'all_targets').strip('"').split(' ')
 
 _random = False

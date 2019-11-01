@@ -1,6 +1,6 @@
 [injection]
 ips_injection="172.16.0.248"
 inj_enabled=true
-f_list="172.16.0.248=memleakexpo_redis-9_4200"
+f_list="172.16.0.248=packetloss_redis-9_4200"
 port=9003
 all_targets="172.16.0.248 192.168.200.189"

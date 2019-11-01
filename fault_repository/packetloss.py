@@ -6,12 +6,13 @@ import subprocess
 import sys
 import ConfigParser
 
+from config import Config
+
 if len(sys.argv) < 3:
     print "expect 1 argument: $target $interval"
     sys.exit(1)
 
-config = ConfigParser.RawConfigParser()
-config.read('../config')
+config = Config().config
 
 _random = False
 exponential = False
