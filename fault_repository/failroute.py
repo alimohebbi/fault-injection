@@ -11,7 +11,7 @@ if len(sys.argv) < 2:
     sys.exit(1)
 
 config = ConfigParser.RawConfigParser()
-config.read('config')
+config.read('config.ini')
 
 try:
     targets = config.get('injection', sys.argv[1] + '_target').strip('"')\

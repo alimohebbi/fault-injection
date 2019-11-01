@@ -3,7 +3,7 @@ import ConfigParser
 import sys
 
 config = ConfigParser.RawConfigParser()
-config.read('config')
+config.read('config.ini')
 f_list = config.get('injection', 'f_list').strip('"').split(' ')
 port = int(config.get('injection', 'port'))
 ips = config.get('injection', 'ips_injection').strip('"').split(' ')

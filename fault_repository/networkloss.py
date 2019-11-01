@@ -12,7 +12,7 @@ if len(sys.argv) < 3:
     sys.exit(1)
 
 config = ConfigParser.RawConfigParser()
-config.read('config')
+config.read('config.ini')
 all_targets = config.get('injection', 'all_targets').strip('"').split(' ')
 
 _random = False

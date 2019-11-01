@@ -27,7 +27,7 @@ ports = {'ellis': 80,
          }
 
 config = ConfigParser.RawConfigParser()
-config.read('config')
+config.read('config.ini')
 
 try:
     port = ports[sys.argv[1]]

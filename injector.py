@@ -4,8 +4,9 @@ import socket
 import subprocess
 import sys
 
-config = ConfigParser.RawConfigParser()
-config.read('config')
+from config import Config
+
+config = Config().config
 port = int(config.get('injection', 'port'))
 BUFFER_SIZE = 4096
 

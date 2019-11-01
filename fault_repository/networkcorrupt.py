@@ -12,7 +12,7 @@ if len(sys.argv) < 3:
     sys.exit(1)
 
 config = ConfigParser.RawConfigParser()
-config.read('config')
+config.read('config.ini')
 
 _random = False
 exponential = False
