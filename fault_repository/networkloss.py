@@ -1,18 +1,24 @@
 #!/usr/bin/python
 
-import time
+import ConfigParser
+import inspect
+import os
+import random
 import signal
 import subprocess
 import sys
-import ConfigParser
-import random
+import time
+
+current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parent_dir = os.path.dirname(current_dir)
+sys.path.insert(0, parent_dir)
+from config import Config
 
 if len(sys.argv) < 3:
     print "expect 1 argument: $target $interval"
     sys.exit(1)
 
-config = ConfigParser.RawConfigParser()
-config.read('config.ini')
+config = Config()
 all_targets = config.get('injection', 'all_targets').strip('"').split(' ')
 
 _random = False

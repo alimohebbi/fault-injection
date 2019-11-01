@@ -1,9 +1,15 @@
 #!/usr/bin/python
-
+import inspect
+import os
 import signal
 import subprocess
 import sys
 import time
+
+current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parent_dir = os.path.dirname(current_dir)
+sys.path.insert(0, parent_dir)
+
 from config import Config
 
 if len(sys.argv) < 3:
