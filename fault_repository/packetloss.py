@@ -34,16 +34,6 @@ except ValueError:
     print "interval cannot be parsed!!Aborting.."
     sys.exit(1)
 
-try:
-    exclude_targets = config.get('injection', sys.argv[1] + '_target').strip('"')\
-        .split(' ')
-except:
-    print "target not exists!"
-    sys.exit(1)
-
-targets = exclude_targets
-
-
 def signal_handler(signal, frame):
     # os.system('sudo tc qdisc del dev eth0 root')
     subprocess.Popen(['sudo', 'tc', 'qdisc', 'del', 'dev', 'eth0', 'root'],
