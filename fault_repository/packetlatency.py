@@ -17,7 +17,7 @@ if len(sys.argv) < 3:
     sys.exit(1)
 
 config = Config().config
-targets = config.get('injection', 'all_targets').strip('"').split(' ')
+all_targets = config.get('injection', 'all_targets').strip('"').split(' ')
 
 _random = False
 exponential = False
@@ -37,12 +37,9 @@ except ValueError:
     print "interval cannot be parsed!!Aborting.."
     sys.exit(1)
 
-try:
-    exclude_targets = config.get('injection', sys.argv[1] + '_target').strip('"') \
-        .split(' ')
-except:
-    print "target not exists!"
-    sys.exit(1)
+targets = []
+for target in all_targets:
+    targets.append(target)
 
 def signal_handler(signal, frame):
     subprocess.Popen(['sudo', 'tc', 'qdisc', 'del', 'dev', 'eth0', 'root'],
