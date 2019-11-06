@@ -17,7 +17,7 @@ if len(sys.argv) < 3:
     sys.exit(1)
 
 config = Config().config
-all_targets = config.get('injection', 'all_targets').strip('"').split(' ')
+targets = config.get('injection', 'all_targets').strip('"').split(' ')
 
 _random = False
 exponential = False
@@ -43,12 +43,6 @@ try:
 except:
     print "target not exists!"
     sys.exit(1)
-
-targets = []
-for target in all_targets:
-    if target not in exclude_targets:
-        targets.append(target)
-
 
 def signal_handler(signal, frame):
     subprocess.Popen(['sudo', 'tc', 'qdisc', 'del', 'dev', 'eth0', 'root'],
