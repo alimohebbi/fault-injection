@@ -1,10 +1,10 @@
 #!/usr/bin/python
 import inspect
-import time
+import os
 import signal
 import subprocess
 import sys
-import os
+import time
 
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parent_dir = os.path.dirname(current_dir)
@@ -17,7 +17,7 @@ if len(sys.argv) < 3:
     sys.exit(1)
 
 config = Config().config
-targets = config.get('injection', 'all_targets').strip('"').split(' ')
+all_targets = config.get('injection', 'all_targets').strip('"').split(' ')
 
 _random = False
 exponential = False
@@ -37,6 +37,10 @@ except ValueError:
     print "interval cannot be parsed!!Aborting.."
     sys.exit(1)
 
+targets = []
+for target in all_targets:
+    targets.append(target)
+
 # Get interface: for host sw, otherwise eth0
 interfaces = os.listdir('/sys/class/net/')
 sw = filter(lambda s: s.startswith('sw'), interfaces)
@@ -48,12 +52,14 @@ else:
     dev = 'eth0'
     host = False
 
+
 def signal_handler(signal, frame):
     # os.system('sudo tc qdisc del dev eth0 root')
     subprocess.Popen(['sudo', 'tc', 'qdisc', 'del', 'dev', dev, 'root'],
                      stdout=subprocess.PIPE).wait()
     sys.exit(0)
     #    os.system('sudo tc qdisc add dev eth0 root netem corrupt 30%')
+
 
 signal.signal(signal.SIGTERM, signal_handler)
 command_set = []
